@@ -8,7 +8,7 @@ export default function EntryCard({ entry, onEdit, onDelete, onImageClick }) {
     day: '2-digit', month: 'short', year: 'numeric'
   })
 
-  const hasDetails = entry.situation || entry.task || entry.action || entry.metric
+  const hasDetails = entry.description || entry.metric
 
   return (
     <article className="entry-card" style={{ '--border-color': cat.color }}>
@@ -39,28 +39,11 @@ export default function EntryCard({ entry, onEdit, onDelete, onImageClick }) {
 
       <h2 className="card-title">{entry.title}</h2>
 
-      {entry.result && (
-        <p className="card-result">{entry.result}</p>
-      )}
-
       {hasDetails && (
         <div className={`card-star ${expanded ? 'expanded' : ''}`}>
-          {entry.situation && (
+          {entry.description && (
             <div className="star-item">
-              <span className="star-label">Situação</span>
-              <p>{entry.situation}</p>
-            </div>
-          )}
-          {entry.task && (
-            <div className="star-item">
-              <span className="star-label">Tarefa</span>
-              <p>{entry.task}</p>
-            </div>
-          )}
-          {entry.action && (
-            <div className="star-item">
-              <span className="star-label">Ação</span>
-              <p>{entry.action}</p>
+              <p style={{ whiteSpace: 'pre-wrap' }}>{entry.description}</p>
             </div>
           )}
           {entry.metric && (
@@ -74,7 +57,7 @@ export default function EntryCard({ entry, onEdit, onDelete, onImageClick }) {
 
       {hasDetails && (
         <button className="expand-btn" onClick={() => setExpanded(v => !v)}>
-          {expanded ? 'Recolher' : 'Ver detalhes STAR'}
+          {expanded ? 'Recolher' : 'Ver descrição'}
           <svg
             width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
             style={{ transform: expanded ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}

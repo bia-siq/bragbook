@@ -4,7 +4,7 @@ import { resizeAndCompressImage } from '../utils/imageUtils'
 
 const EMPTY = {
   title: '', category: 'conquista', date: new Date().toISOString().slice(0, 10),
-  situation: '', task: '', action: '', result: '', metric: '', tags: '', images: []
+  description: '', metric: '', tags: '', images: []
 }
 
 export default function EntryForm({ entry, onSave, onClose }) {
@@ -117,47 +117,17 @@ export default function EntryForm({ entry, onSave, onClose }) {
             </div>
           </div>
 
-          <div className="star-section">
-            <div className="star-section-header">
-              <span>Formato STAR</span>
-              <span className="star-hint">Situação · Tarefa · Ação · Resultado</span>
-            </div>
-            <div className="form-group">
-              <label>Situação</label>
-              <textarea
-                value={form.situation}
-                onChange={e => set('situation', e.target.value)}
-                placeholder="Qual era o contexto ou problema?"
-                rows={2}
-              />
-            </div>
-            <div className="form-group">
-              <label>Tarefa</label>
-              <textarea
-                value={form.task}
-                onChange={e => set('task', e.target.value)}
-                placeholder="Qual era a sua responsabilidade?"
-                rows={2}
-              />
-            </div>
-            <div className="form-group">
-              <label>Ação</label>
-              <textarea
-                value={form.action}
-                onChange={e => set('action', e.target.value)}
-                placeholder="O que você fez especificamente?"
-                rows={3}
-              />
-            </div>
-            <div className="form-group">
-              <label>Resultado</label>
-              <textarea
-                value={form.result}
-                onChange={e => set('result', e.target.value)}
-                placeholder="Qual foi o impacto ou desfecho?"
-                rows={2}
-              />
-            </div>
+          <div className="form-group">
+            <label>
+              Descrição
+              <span className="star-hint">Formato STAR: Situação · Tarefa · Ação · Resultado</span>
+            </label>
+            <textarea
+              value={form.description}
+              onChange={e => set('description', e.target.value)}
+              placeholder="Descreva sua conquista usando o formato STAR:&#10;• Situação: qual era o contexto ou desafio?&#10;• Tarefa: qual era a sua responsabilidade?&#10;• Ação: o que você fez especificamente?&#10;• Resultado: qual foi o impacto ou desfecho?"
+              rows={6}
+            />
           </div>
 
           <div className="form-group">
