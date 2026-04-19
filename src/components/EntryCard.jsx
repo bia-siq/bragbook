@@ -15,7 +15,7 @@ export default function EntryCard({ entry, onEdit, onDelete, onImageClick }) {
       <div className="card-header">
         <div className="card-meta">
           <span className="card-category" style={{ color: cat.color }}>
-            {cat.emoji} {cat.label}
+            {cat.label}
           </span>
           <time className="card-date">{date}</time>
         </div>

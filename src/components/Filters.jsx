@@ -45,7 +45,7 @@ export default function Filters({ search, setSearch, category, setCategory, peri
               style={category === cat.id ? { '--active-color': cat.color } : {}}
               onClick={() => setCategory(category === cat.id ? '' : cat.id)}
             >
-              {cat.emoji} {cat.label}
+              {cat.label}
             </button>
           ))}
         </div>

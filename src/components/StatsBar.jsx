@@ -24,7 +24,6 @@ export default function StatsBar({ entries }) {
       <div className="stats-counters">
         {CATEGORIES.map(cat => (
           <div key={cat.id} className="stat-chip" style={{ '--cat-color': cat.color }}>
-            <span className="stat-emoji">{cat.emoji}</span>
             <span className="stat-label">{cat.label}</span>
             <span className="stat-count">{counts[cat.id]}</span>
           </div>

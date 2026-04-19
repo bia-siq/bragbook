@@ -79,14 +79,7 @@ export default function ResetPasswordPage() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-brand">
-          <svg width="40" height="40" viewBox="0 0 32 32" fill="none">
-            <rect width="32" height="32" rx="8" fill="#D63830"/>
-            <rect x="7" y="8" width="18" height="2" rx="1" fill="#F5F0EA"/>
-            <rect x="7" y="13" width="14" height="2" rx="1" fill="#F5F0EA"/>
-            <rect x="7" y="18" width="16" height="2" rx="1" fill="#F5F0EA"/>
-            <rect x="7" y="23" width="10" height="2" rx="1" fill="#F5F0EA"/>
-          </svg>
-          <h1 className="auth-app-name">Brag Book</h1>
+          <div className="auth-wordmark"><span className="wordmark-brag">brag</span> <span className="wordmark-book">book</span></div>
           <p className="auth-subtitle">Crie sua nova senha</p>
         </div>
 

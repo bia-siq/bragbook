@@ -68,14 +68,7 @@ export default function ProfilePage() {
       <header className="app-header">
         <div className="header-inner">
           <div className="header-brand">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect width="32" height="32" rx="8" fill="#D63830"/>
-              <rect x="7" y="8" width="18" height="2" rx="1" fill="#F5F0EA"/>
-              <rect x="7" y="13" width="14" height="2" rx="1" fill="#F5F0EA"/>
-              <rect x="7" y="18" width="16" height="2" rx="1" fill="#F5F0EA"/>
-              <rect x="7" y="23" width="10" height="2" rx="1" fill="#F5F0EA"/>
-            </svg>
-            <h1>Brag Book</h1>
+            <h1 className="wordmark"><span className="wordmark-brag">brag</span> <span className="wordmark-book">book</span></h1>
           </div>
           <div className="header-actions">
             <button className="btn btn-ghost" onClick={() => navigate('/')}>← Voltar</button>

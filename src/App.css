@@ -75,12 +75,24 @@ body {
   gap: 10px;
 }
 
-.header-brand h1 {
+.wordmark {
   font-family: 'Instrument Serif', Georgia, serif;
   font-size: 1.35rem;
   font-weight: 400;
   letter-spacing: -0.01em;
-  color: var(--text);
+  line-height: 1;
+}
+
+.wordmark-brag { color: var(--text); }
+.wordmark-book { color: var(--red); font-style: italic; }
+
+.auth-wordmark {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 4px;
 }
 
 .header-actions {
@@ -100,8 +112,8 @@ body {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  padding: 8px 16px;
-  border-radius: var(--radius);
+  padding: 8px 18px;
+  border-radius: 999px;
   border: none;
   cursor: pointer;
   transition: all 0.15s ease;
@@ -186,8 +198,6 @@ body {
   padding: 5px 12px 5px 10px;
   font-size: 0.8125rem;
 }
-
-.stat-emoji { font-size: 0.875rem; }
 
 .stat-label {
   color: var(--text-muted);
@@ -1059,18 +1069,10 @@ body {
   gap: 10px;
 }
 
-.auth-app-name {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
 .auth-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
-  margin-top: -4px;
+  margin-top: -2px;
 }
 
 .auth-socials {
