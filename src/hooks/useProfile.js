@@ -1,0 +1,34 @@
+import { useState, useEffect } from 'react'
+import { supabase } from '../lib/supabase'
+import { useAuth } from '../contexts/AuthContext'
+
+export function useProfile() {
+  const { user } = useAuth()
+  const [profile, setProfile] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (!user) return
+    supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single()
+      .then(({ data }) => {
+        setProfile(data)
+        setLoading(false)
+      })
+  }, [user])
+
+  async function updateProfile(updates) {
+    const { data, error } = await supabase
+      .from('profiles')
+      .upsert({ id: user.id, ...updates, updated_at: new Date().toISOString() })
+      .select()
+      .single()
+    if (!error && data) setProfile(data)
+    return { data, error }
+  }
+
+  return { profile, loading, updateProfile }
+}

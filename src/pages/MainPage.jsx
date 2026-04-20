@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useEntries } from '../hooks/useEntries'
+import { useProfile } from '../hooks/useProfile'
 import Header from '../components/Header'
 import StatsBar from '../components/StatsBar'
 import Filters from '../components/Filters'
@@ -7,9 +8,12 @@ import EntryList from '../components/EntryList'
 import EntryForm from '../components/EntryForm'
 import Lightbox from '../components/Lightbox'
 import ConfirmDialog from '../components/ConfirmDialog'
+import OnboardingModal from '../components/OnboardingModal'
 
 export default function MainPage() {
   const { entries, loading, addEntry, updateEntry, removeEntry } = useEntries()
+  const { profile, loading: profileLoading } = useProfile()
+  const [onboardingDone, setOnboardingDone] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const [editEntry, setEditEntry] = useState(null)
   const [deleteId, setDeleteId] = useState(null)
@@ -98,6 +102,13 @@ export default function MainPage() {
           index={lightbox.index}
           onClose={() => setLightbox(null)}
           onNav={i => setLightbox(l => ({ ...l, index: i }))}
+        />
+      )}
+
+      {!profileLoading && !onboardingDone && profile?.onboarding_completed !== true && (
+        <OnboardingModal
+          profile={profile}
+          onComplete={() => setOnboardingDone(true)}
         />
       )}
     </div>

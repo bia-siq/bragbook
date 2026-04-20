@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
+import PhoneInput from '../components/PhoneInput'
+import AvatarPicker from '../components/AvatarPicker'
 
 export default function ProfilePage() {
   const { user, signOut } = useAuth()
@@ -81,6 +83,13 @@ export default function ProfilePage() {
           <h2 className="profile-title">Meu Perfil</h2>
 
           <form className="profile-form" onSubmit={handleSave}>
+            <div className="profile-avatar-row">
+              <AvatarPicker
+                value={form.avatar_url}
+                onChange={v => set('avatar_url', v)}
+              />
+            </div>
+
             <div className="form-row">
               <div className="form-group form-group-lg">
                 <label>Nome</label>
@@ -104,11 +113,9 @@ export default function ProfilePage() {
 
             <div className="form-group">
               <label>Telefone</label>
-              <input
-                type="tel"
+              <PhoneInput
                 value={form.phone}
-                onChange={e => set('phone', e.target.value)}
-                placeholder="+55 11 99999-9999"
+                onChange={v => set('phone', v)}
               />
             </div>
 
@@ -140,24 +147,8 @@ export default function ProfilePage() {
               />
             </div>
 
-            <div className="form-group">
-              <label>
-                Foto de perfil
-                <span className="star-hint">URL da imagem</span>
-              </label>
-              <input
-                type="url"
-                value={form.avatar_url}
-                onChange={e => set('avatar_url', e.target.value)}
-                placeholder="https://..."
-              />
-              {form.avatar_url && (
-                <img src={form.avatar_url} alt="Preview" className="avatar-preview" />
-              )}
-            </div>
-
             <div className="profile-actions">
-              {success && <span className="save-success">✓ Perfil salvo!</span>}
+              {success && <span className="save-success">perfil salvo.</span>}
               <button type="submit" className="btn btn-primary" disabled={saving}>
                 {saving ? 'Salvando...' : 'Salvar perfil'}
               </button>
