@@ -123,7 +123,7 @@ export default function OnboardingModal({ profile, onComplete }) {
           )}
           {step === 3 && <StepFirstEntry onNext={handleFirstEntry} onBack={back} />}
           {step === 4 && <StepFrequency onNext={next} />}
-          {step === 5 && <StepDone savedEntry={savedEntry} onFinish={handleFinish} />}
+          {step === 5 && <StepDone savedEntry={savedEntry} onFinish={handleFinish} onBack={back} />}
         </div>
       </div>
     </div>

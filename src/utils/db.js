@@ -16,9 +16,11 @@ function toApp(row) {
 }
 
 export async function getAllEntries() {
+  const { data: { user } } = await supabase.auth.getUser()
   const { data, error } = await supabase
     .from('entries')
     .select('*')
+    .eq('user_id', user.id)
     .order('date', { ascending: false })
   if (error) throw error
   return (data || []).map(toApp)

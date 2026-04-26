@@ -1329,16 +1329,28 @@ input:disabled {
   flex-direction: column;
 }
 
-/* Progress bar */
-.onboarding-progress {
-  height: 3px;
-  background: var(--border);
+/* Progress dots */
+.onboarding-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 0 8px;
   flex-shrink: 0;
 }
-.onboarding-progress-bar {
-  height: 100%;
+.onboarding-dot {
+  width: 20px;
+  height: 6px;
+  border-radius: 3px;
+  background: #e8e0d6;
+  transition: background 0.2s, width 0.2s;
+}
+.onboarding-dot--active {
   background: var(--red);
-  transition: width 0.3s ease;
+  width: 28px;
+}
+.onboarding-dot--done {
+  background: #7a6e65;
+  opacity: 0.4;
 }
 
 /* Step wrapper */
@@ -1733,6 +1745,166 @@ input:disabled {
    ONBOARDING RESPONSIVE
    ============================================================ */
 
+/* Step inner — entry variant (wide card) */
+.onboarding-step-inner--entry {
+  max-width: 640px;
+}
+
+/* btn-sm */
+.btn-sm {
+  font-size: 0.8125rem;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin-icon {
+  animation: spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── AI Textarea ── */
+.ai-textarea-wrap {
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.ai-textarea-wrap--done {
+  border-color: var(--red-light);
+}
+.ai-textarea-container {
+  position: relative;
+}
+.ai-textarea {
+  width: 100%;
+  background: var(--bg);
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9375rem;
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 130px;
+  display: block;
+}
+.ai-textarea::placeholder { color: var(--text-muted); }
+.ai-textarea:disabled { color: var(--text-muted); }
+
+.ai-loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(245, 240, 234, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.ai-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding: 10px 14px;
+}
+.ai-toolbar-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-muted);
+  flex-shrink: 1;
+  min-width: 0;
+}
+.ai-toolbar-label {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ai-toolbar-action {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Fields revealed after AI ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ai-fields-revealed {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+  animation: slideUp 0.25s ease;
+}
+
+/* ── Category chips ── */
+.category-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.category-chip {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 100px;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.category-chip:hover {
+  border-color: var(--text-muted);
+  color: var(--text);
+}
+
+/* ── Google Calendar widget ── */
+.gcal-widget {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 32px;
+  background: var(--card);
+}
+.gcal-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gcal-icon { color: var(--text-muted); display: flex; }
+.gcal-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.gcal-desc {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
 @media (max-width: 760px) {
   .onboarding-two-col {
     grid-template-columns: 1fr;
@@ -1750,4 +1922,7 @@ input:disabled {
   .onboarding-modal .onboarding-step {
     padding: 24px 20px 32px;
   }
+
+  .ai-toolbar-label { display: none; }
+  .gcal-widget { flex-direction: column; align-items: flex-start; }
 }
