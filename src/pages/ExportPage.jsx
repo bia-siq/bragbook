@@ -168,7 +168,6 @@ function generateDossie(entries, profile, config) {
 // ── Hub ──────────────────────────────────────────────────────
 function ExportHub({ entryCount, onStart, onHistory }) {
   const isEmpty = entryCount === 0
-  const isFew   = entryCount > 0 && entryCount < 5
 
   const cards = [
     {
@@ -178,9 +177,7 @@ function ExportHub({ entryCount, onStart, onHistory }) {
       titulo: 'dossiê de promoção',
       desc: 'Um documento pronto para levar ao 1:1 de promoção, com métricas em destaque e impacto organizado por competência.',
       meta: `~2 min · baseado em ${entryCount} entrada${entryCount !== 1 ? 's' : ''}`,
-      active: !isEmpty && !isFew,
-      disabled: isFew,
-      disabledTip: `Funciona melhor a partir de 5 registros — você tem ${entryCount}.`,
+      active: !isEmpty,
     },
     {
       id: 'linkedin',
